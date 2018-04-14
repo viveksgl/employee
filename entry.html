@@ -1,0 +1,278 @@
+<form class="form" name="empform" ng-submit="submitForm(empform.$valid)" novalidate>
+  <div class="row">
+    <!-- mudule 1 start-->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!--image-->
+          <div class="form-group">
+            <label>Profile Picture  <span style="color: red;">*</span></label>
+            <input type="file" name="photo">
+            <img ng-src="{{filepreview}}" class="img-responsive" ng-show="filepreview"/>
+
+          </div>
+          <!-- id-->
+          <div class="form-group " >
+            <label for="Id" class=" control-label">IDNo <span style="color: red;">*</span></label>
+            <input title="pls enter employee id " type="text" class="form-control" ng-model="Id" ng-maxlength="6" name="Id" placeholder="Enter ID No" required>
+            <span style="color:red" ng-show=" empform.Id.$invalid && empform.Id.$dirty ||empform.Id.$touched ">
+                  <span ng-show="empform.Id.$error.required">ID No. is required.</span>
+            <span ng-show="empform.Id.$error.maxlength">only 6 later</span>
+            </span>
+          </div>
+          <!--name   ng-class="{'has-error' : empform.name.$invalid && empform.name.$touched }"-->
+          <div class="form-group">
+            <label for="name" class="control-label">Name <span style="color: red;">*</span></label>
+            <input type="text" class="form-control" id="name" name="name" ng-model="name" placeholder="Enter Name" required>
+            <span style="color: red" ng-show="empform.name.$touched && empform.name.$invalid">
+            <span  ng-show= "empform.name.$error.required">Name is required</span>
+            </span>
+          </div>
+          <!-- school ng-class="{'has-error' : empform.school.$invalid && empform.school.$dirty }" -->
+          <div class="form-group" >
+            <label for="school" class=" control-labe ">School <span style="color: red;">*</span> </label>
+            <!--<span class="condensed-input"><i class="fa fa-filter">school</i> </span>-->
+            <select id="school" name="school" kendo-drop-down-list k-options="unitSelectOptions" k-filter="'contains'" k-rebind="unitSelectOptions" ng-model="school" style="width: 100%" required></select>
+            <span style="color:red" ng-show="empform.school.$touched && empform.school.$invalid">
+            <span ng-show="empform.school.$error.required">School is required.</span>
+            </span>
+          </div>
+          <!-- department -->
+
+          <!-- center-->
+
+          <!-- dateofbirth-->
+          <div class="form-group">
+            <label for="doB" class=" control-label">Date of Birth <span style="color: red;">*</span></label>
+            <input kendo-date-picker onkeydown="return false;" id="datebirth" name="datebirth" ng-model="datebirth" k-options="datePickerbirth"  style="width: 100%" required  />
+            <span style="color:red" ng-show="empform.datebirth.$touched && empform.datebirth.$invalid">
+              <span ng-show="empform.datebirth.$error.required">Date of birth is required.</span>
+              
+            </span>
+
+          </div>
+          <!-- dateofRetirement-->
+          <div class="form-group">
+            <label for="doB" class=" control-label">Date of Retirement</label>
+            <input kendo-date-picker onkeydown="return false;" k-ng-model="dateRet" k-options="datePickerOptions" style="width: 100%" />
+          </div>
+          <!-- Gender-->
+          <div class="form-group">
+            <label for="Gender" class=" control-label  ">Gender <span style="color: red;">*</span></label>
+            <select kendo-drop-down-list k-options="genderOptns" id="gender" name="gender" ng-model="gender" style="width: 100%;" required></select>
+            <span style="color:red" ng-show=" empform.gender.$invalid &&  empform.gender.$touched ">
+            <span ng-show="empform.gender.$error.required">Gender is required.</span>
+             
+            </span>
+
+          </div>
+          <!-- PM-->
+          <div class="form-group">
+            <label for="PM" class=" control-label">PH</label>
+            <input type="text" class="form-control" id="pm" placeholder="Enter PM.">
+          </div>
+          <!-- Married-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" required> Married
+            </label>
+          </div>
+          <!-- Height-->
+          <div class="form-group">
+            <label for="height" class=" control-label">Height</label>
+            <input type="name" class="form-control" id="height">
+          </div>
+          <!-- IDmark(a)-->
+          <div class="form-group">
+            <label for="Idmarka" class=" control-label">Identification Mark(a)</label>
+            <input type="text" class="form-control" id="Idmarka">
+          </div>
+          <!-- IDmark(b)-->
+          <div class="form-group">
+            <label for="Idmarkb" class=" control-label">Identification Mark(b)</label>
+            <input type="text" class="form-control" id="Idmarkb">
+          </div>
+        </div>
+        <!-- panel-body end-->
+      </div>
+      <!--panel end-->
+    </div>
+    <!-- module 1 end-->
+    <!-- module 2 start-->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- DOJ university-->
+          <div class="form-group">
+            <label for="DOJ" class=" control-label">Date of Joining in  University <span style="color:red  "> *</span></label>
+            <input kendo-date-picker onkeydown="return false;" id="dateJoin" name="dateJoin" ng-model="dateJoin" k-options="dateJoining" style="width: 100%" required />
+            <span style="color:red" ng-show="empform.dateJoin.$touched && empform.dateJoin.$invalid">
+              <span ng-show="empform.dateJoin.$error.required">Date of Joining is required.</span>
+              
+            </span>
+
+          </div>
+          <!--Present desination-->
+          <div class="form-group">
+            <label for="PD" class="control-label">Present Designation</label>
+            <select kendo-drop-down-list k-options="designationOptns" k-rebind="designationOptns" id="pdesignation" name="pdesignation" ng-model="designation" style="width: 100%;" required></select>
+          </div>
+          <!-- category-->
+          <div class="form-group">
+            <label for="category" class=" control-label  ">Category <span style="color:red  "> *</span></label>
+            <select kendo-drop-down-list k-options="Category" id="category" name="category" ng-model="category" style="width: 100%;" required></select>
+            <span style="color:red" ng-show="empform.category.$touched && empform.category.$invalid">
+              <span ng-show="empform.category.$error.required">Category is required.</span>
+            </span>
+          </div>
+          <!-- select Service-->
+          <div class="form-group">
+            <label id="service" name="service" ng-model="service">Select Service<span style="color:red  "> *</span> </label><br>
+              <input type="radio" id="service" name="service" > Active Service<br>
+          <!-- Reemployed-->
+              <input type="radio" id="service" name="service"> Reemployed
+              <span style="color:red" ng-show="empform.service.$touched && empform.service.$invalid">
+                  <span ng-show="empform.service.$error.required">Active Service is required.</span>
+                </span>
+          </div>
+          <!-- nationality-->
+          <div class="form-group">
+            <label for="nationality" class=" control-label">Nationality</label>
+            <div class="chackbox">
+              <lable><input type="checkbox" ng-model="indian" ng-disabled="nonindian" >Indian</lable></br>
+              <lable><input type="checkbox" ng-model="nonindian" ng-disabled="indian" >Non-Indian</lable>
+            </div>
+          </div>
+          <!-- aadhar no.  ng-class="{'has-error' : empform.aadhar.$invalid && empform.aadhar.$touched }"-->
+          <div class="form-group">
+            <label for="aadhar" class=" control-label">Aadhar Number<span style="color: red;"> *</span></label>
+            <input type="text" class="form-control" id="aadhar" name="aadhar" ng-model="aadhar" ng-pattern="/^\d{4}\d{4}\d{4}$/" placeholder="Enter your aadhar no." ng-disabled="nonindian" required>
+            <span style="color:red" class="help-block" ng-show="empform.aadhar.$invalid && empform.aadhar.$dirty || empform.aadhar.$touched">
+              <span ng-show= "empform.aadhar.$error.required">please enter Aadhar number</span>
+            <span ng-show="empform.aadhar.$error.pattern">please enter a valid Aadhar number</span>
+            </span>
+          </div>
+          <!-- Nationality Number-->
+          <div class="form-group">
+            <label for="Nationality No." class=" control-label">Nationality Number </label>
+            <input type="text" class="form-control" id="Idmarkb" placeholder="Enter your Nationality Number">
+          </div>
+          <!--Nationality Date Of Eligibilty-->
+          <div class="form-group">
+            <label for="Nationality date" class=" control-label">Nationality Date Of Eligibilty </label>
+            <input kendo-date-picker onkeydown="return true;" k-ng-model="Nationalitydate" k-options="Nationalitydate" required style="width: 100%" />
+          </div>
+          <!--PAN-->
+          <div class="form-group">
+            <label for="pan" class=" control-label">PAN <span style="color: red"> *</span> </label>
+            <input type="text" class="form-control" id="pan" name="pan" ng-model="pan" ng-pattern="/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/" placeholder="Enter your PAN No." required>
+            <span style="color: red" class="help-block" ng-show="empform.pan.$dirty && empform.pan.$invalid || empform.pan.$touched">
+                                  <span ng-show ="empform.pan.$error.required">Enter a pan number</span>
+            <span ng-show="empform.pan.$error.pattern">Enter a  valid pan number</span>
+            </span>
+          </div>
+          <!--Passport-->
+          <div class="form-group">
+            <label for="Passport" class=" control-label">Passport<span style="color: red"> *</span> </label>
+            <input type="text" class="form-control" id="Passport" name="passport" ng-model="passport" placeholder="Enter your Passport No." ng-pattern="/^[a-zA-Z]{1}[0-9]{7}$/" required>
+            <span style="color: red" class="help-block" ng-show="empform.passport.$dirty && empform.passport.$invalid || empform.passport.$touched">
+                                  <span ng-show="empform.passport.$error.required">Enter your passport number</span>
+            <span ng-show="empform.passport.$error.pattern">Enter your valid passport number</span>
+            </span>
+          </div>
+          <!--GPFNo.-->
+          <div class="form-group">
+            <label for="pgf" class=" control-label">GPF No.</label>
+            <input type="text" class="form-control" id="gpf" placeholder="Enter your GPF No.">
+          </div>
+          <!--NPSNo.-->
+          <div class="form-group">
+            <label for="nps" class=" control-label">NPS No.</label>
+            <input type="text" class="form-control" id="nps" placeholder="Enter your nps No.">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mudule 2 end-->
+    <!-- mudule 3 start-->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="form-group">
+            <!-- Phone1-->
+            <label for="Phone1" class=" control-label">Phone Number <span style="color: red"> *</span> </label>
+            <input type="text" class="form-control" id="phone1" name="phone1" ng-model="phone1" placeholder="Enter Phone No." ng-pattern="/^[7-9][0-9]{9}$/" required>
+            <span style="color: red" class="help-block" ng-show="empform.phone1.$dirty && empform.phone1.$invalid || empform.phone1.$touched">
+                  <span ng-show="empform.phone1.$error.required">Enter a phone number </span>
+            <span ng-show="empform.phone1.$error.pattern">Enter a valid phone number </span>
+            </span>
+          </div>
+          <!--phone2-->
+          <div class="form-group">
+            <label for="phone2" class="control-label">Phone Number 2</label>
+            <input type="text" class="form-control" id="phone2" name="phone2" ng-model="phone2" placeholder="Enter your phone no. 2 " ng-pattern="/^[7-9][0-9]{9}$/">
+            <span style="color: red" class="help-block" ng-show="empform.phone2.$dirty && empform.phone2.$invalid ">
+                  <span ng-show="empform.phone2.$error.pattern">Enter a valid phone number </span>
+            </span>
+          </div>
+          <!-- email presonal-->
+          <div class="form-group">
+            <label for="PM" class=" control-label">Email Personal <span style="color: red"> *</span> </label>
+            <input type="text" class="form-control" id="emailp" name="emailp" ng-model="emailp" placeholder="Enter  your presonal email" ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required>
+            <span style="color: red" class="help-block" ng-show="empform.emailp.$dirty && empform.emailp.$invalid ||empform.emailp.$touched ">
+                  <span ng-show="empform.emailp.$error.required">Enter a Email Address </span>
+            <span ng-show="empform.emailp.$error.pattern">Enter a valid Email Address </span>
+            </span>
+          </div>
+          <!-- email official-->
+          <div class="form-group">
+            <label for="email2" class=" control-label">Email Official</label>
+            <input type="text" class="form-control" id="email" name="email" ng-model="email" placeholder="Enter  your official email" ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/">
+            <span style="color: red" class="help-block" ng-show="empform.email.$dirty && empform.email.$invalid  ">
+                  <span ng-show="empform.emailx.$error.pattern">Enter a valid Email Address </span>
+            </span>
+          </div>
+          <!-- teacher-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Teacher Signed Y/N
+            </label>
+          </div>
+          <!-- attested-->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Attested Y/N
+            </label>
+          </div>
+          <!-- date of attestation-->
+          <div class="form-group">
+            <label for="doa" class=" control-label">date Of Attestation</label>
+            <input kendo-date-picker onkeydown="return false;" k-ng-model="attestationdate" k-options="Attestationdate" style="width: 100%" />
+          </div>
+          <!-- attesting officer-->
+          <div class="form-group">
+            <label for="attesting officer" class=" control-label">Designation Of Attesting Office </label>
+            <input kendo-date-picker onkeydown="return false;" k-ng-model="officerdate" k-options="Officerdate" style="width: 100%" />
+          </div>
+          <!-- remark-->
+          <div class="form-group">
+            <label for="remark" class=" control-label">Remark</label>
+            <textarea class="form-control" rows="5" id="remark"></textarea>
+          </div>
+          <!-- Signature-->
+          <div class="form-group">
+            <label for="signature" class=" control-label"> Signature  <span style="color: red;">*</span></label>
+            <input type="file">
+          </div>
+
+        </div>
+        <!-- panel body end-->
+      </div>
+      <!-- panel end-->
+    </div>
+    <!-- 3 module end-->
+  </div>
+  <!-- row end-->
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+<!-- form end-->
